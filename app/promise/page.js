@@ -21,7 +21,7 @@ export default async function Promises() {
   const data3 = getData3();
   //bu şekilde promise ları oluşturduk.ve paralel bir şekilde istek atmış olduk
   const [dataRes, data2Res, data3Res] = await Promise.all([data, data2, data3]);
-  console.log(dataRes);
+  console.log(dataRes);   
 
   return <main>Data fetching</main>;
 }
