@@ -8,13 +8,15 @@ const Todo = ({todo,isDone,id}) => {
      const router = useRouter();
 
  async function handleChange() {
-
-   const res = await fetch(`https://634ac3fc5df952851418480f.mockapi.io/api/todos/${id}`, {
-     method: "PUT",
-     body: JSON.stringify({ "todo": "dasdasdasd", "id": id, "isDone": !isDone }),
-   });
+  const data = { todo: todo,id:id, isDone: !isDone };
+  const options = {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+   const res = await fetch(`https://634ac3fc5df952851418480f.mockapi.io/api/todos/${id}`, options );
    const result = await res.json();
-   console.log('res',result);
+   console.log(result);
   
    router.refresh();
  }
